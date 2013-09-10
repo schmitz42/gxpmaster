@@ -114,7 +114,8 @@
         "plugins/LoadingIndicator.js",
         "plugins/Playback.js",
         "locale/es.js",
-        "locale/ca.js"
+        "locale/ca.js",
+        "ux/RowExpander.js"
     );
     
     var scripts = document.getElementsByTagName("script");
