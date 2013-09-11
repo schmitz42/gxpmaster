@@ -1,60 +1,47 @@
-OpenLayers.DOTS_PER_INCH = 72;
+OpenLayers.DOTS_PER_INCH = 96;
+OpenLayers.IMAGE_RELOAD_ATTEMPTS = 5;
+GeoExt.Lang.set("de");
 
 var app = new gxp.Viewer(
 		{
+			
+			/* Sets the proxy to use in order to bypass the Same Origin Policy when accessing remote resources through JavaScript. Only needed when external resources (from outside the OpenGeo Suite instance that your app lives in) are used. Will be set as OpenLayers.ProxyHost. */
 			proxy : '/cgi-bin/proxy.cgi?url=',
+			
+			/* The items to add to the portal, in addition to the map panel that the viewer will create automatically. */
+			//portalItems: configured below in portalConfig.items
+			  
+			/* Configuration object for the wrapping container (usually an Ext.Viewport) of the viewer */
 			portalConfig : {
 				layout : "border",
 				region : "center",
-
-				// by configuring items here, we don't need to configure
-				// portalItems
-				// and save a wrapping container
-				items : [ {
-					id : "centerpanel",
-					xtype : "panel",
-					layout : "fit",
-					region : "center",
-					border : false,
-					items : [ "mymap" ]
-				}, {
-					id : "westpanel",
-					xtype : "panel",
-					title: "Themen",
-					layout : "fit",
-					region : "west",
-					width : 200,
-					split: true,
-			        collapsible: true,
-			        collapseMode: "undefined"
-				}, {
-					id : "eastpanel",
-					xtype : "container",
-					layout : "fit",
-					region : "east",
-					width : 200,
-					items : [{						
-						xtype : "gxp_autocompletecombo",
-						// outputTarget: "map.tbar",
-						url : "http://wscd0095/fachdaten_public/services/wfs",
-						fieldName : "name",
-						featureType : "verkehr_parkhaeuser",
-						featurePrefix : "app",
-						emptyText : "Suche nach Parkhaus..."
-					} ]
-				} ],
-				bbar : {
-					id : "mybbar"
-				}
+				// by configuring items here, we don't need to configure portalItems and save a wrapping container
+				items: [ {
+                    id : "centerpanel",
+                    xtype : "panel",
+                    layout : "fit",
+                    region : "center",
+                    border : false,
+                    items : [ "mymap" ]
+                }, {
+                    id : "westpanel",
+                    xtype : "panel",
+                    title: "Themen",
+                    layout : "fit",
+                    region : "west",
+                    width : 200,
+                    split: true,
+                    collapsible: true
+                }]
 			},
-			// configuration of all tool plugins for this application
+			
+			/*A set of tools that you want to use in the application, such as measure tools or a layer tree*/
 			tools : [ {
 				ptype : "gxp_layertree",
 				outputConfig : {
 					id : "tree",
 					border : true,
-					tbar : []
-				// we will add buttons to "tree.bbar" later
+					tbar : [] // we will add buttons to "tree.bbar" later				
 				},
 				outputTarget : "westpanel"
 			}, {
@@ -63,6 +50,9 @@ var app = new gxp.Viewer(
 			}, {
 				ptype : "gxp_removelayer",
 				actionTarget : [ "tree.tbar", "tree.contextMenu" ]
+			}, {
+			    ptype: 'gxp_measure',
+			    actionTarget : "map.tbar"
 			}, {
 				ptype : "gxp_zoomtoextent",
 				actionTarget : "map.tbar"
@@ -83,8 +73,13 @@ var app = new gxp.Viewer(
 				actionTarget : [ "tree.tbar", "tree.contextMenu" ]
 			}, {
 				ptype : "gxp_legend",
-				actionTarget : [ "map.tbar", "tree.tbar" ]
-			}/*, {
+				actionTarget : "tree.tbar"				
+			}, {
+                ptype : "gxp_print",
+                actionTarget : "map.tbar" ,
+                printCapabilities: printConfig
+        }
+			/*, {
 				ptype: "lgv_drawbox",
 				id: "drawbox",
 				actionTarget: "map.tbar", //where the action appears
@@ -102,8 +97,17 @@ var app = new gxp.Viewer(
 				outputTarget: "map.tbar"
 			}*/
 			],
-
-			// layer sources
+            
+            /*Any items to be added to the map panel, such as a zoom slider*/
+			mapItems:  [{
+                    xtype : "gx_zoomslider",
+                    vertical : true,
+                    height : 100
+                }, {
+                    xtype: "gxp_scaleoverlay"
+                }],
+			
+			/*Configuration of layer sources available to the viewer, such as MapQuest or a WMS server*/
 			sources : {
 				local : {
 					ptype : "gxp_wmssource",
@@ -119,7 +123,8 @@ var app = new gxp.Viewer(
 					ptype : "gxp_olsource"
 				}
 			},
-			// map and layers
+			
+			/*The configuration for the actual map part of the viewer, such as projection, layers, center and zoom*/
 			map : {
 				id : "mymap", // id needed to reference map in portalConfig
 				// above
@@ -127,18 +132,14 @@ var app = new gxp.Viewer(
 				projection : "EPSG:25832",
 				center : [ 565874, 5934140 ],
 				zoom : 1,
-				resolutions : [ 66.14579761460263, 26.458319045841044,
-						15.874991427504629, 10.583327618336419,
-						5.2916638091682096, 2.6458319045841048,
-						1.3229159522920524, 0.6614579761460262,
-						0.2645831904584105 ],
-				maxExtent : [ 442800.0, 5809000.0, 781466.4837867655,
-						6147666.4837867655 ],
+				resolutions : [ 132.29159522920526, 66.14579761460263, 26.458319045841054, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105 ],
+				maxExtent : [ 458000.0, 5850000.0,660000.0, 5990000.0 ],
 				layers : [
 						{
 							source : "webatlasde",
 							name : "1",
 							group : "background",
+							isBaseLayer: true
 						},
 						{
 							source : "ol",
@@ -195,7 +196,7 @@ var app = new gxp.Viewer(
 							}
 						},
 						//add any OL layer, wms
-						{
+						{  
 							source : "ol",
 							type : "OpenLayers.Layer.WMS",
 							args : [
@@ -207,12 +208,20 @@ var app = new gxp.Viewer(
 										transparent: true
 									} ]
 						}
-						],
-				items : [ {
-					xtype : "gx_zoomslider",
-					vertical : true,
-					height : 100
-				} ]
+					]
 			}
 
 		});
+
+
+/*
+{
+     xtype : "gxp_autocompletecombo",
+    // outputTarget: "map.tbar",
+    url : "http://wscd0095/fachdaten_public/services/wfs",
+    fieldName : "name",
+    featureType : "verkehr_parkhaeuser",
+    featurePrefix : "app",
+    emptyText : "Suche nach Parkhaus..."
+}
+ * */

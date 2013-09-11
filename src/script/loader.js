@@ -29,6 +29,7 @@
         "widgets/LineSymbolizer.js",
         "widgets/PolygonSymbolizer.js",
         "widgets/RulePanel.js",
+        "widgets/ScaleOverlay.js",
         "widgets/ScaleLimitPanel.js",
         "widgets/TextSymbolizer.js",
         "widgets/Viewer.js",
@@ -54,7 +55,7 @@
         "widgets/form/PlaybackModeComboBox.js",
         "widgets/PlaybackOptionsPanel.js",
         "widgets/slider/ClassBreakSlider.js",
-        "widgets/tips/RangeSliderTip.js",
+        //"widgets/tips/RangeSliderTip.js",
         "widgets/TimelinePanel.js",
         "widgets/form/CSWFilterField.js",
         "widgets/CatalogueSearchPanel.js",
@@ -115,6 +116,7 @@
         "plugins/Playback.js",
         "locale/es.js",
         "locale/ca.js",
+        "locale/de.js",
         "ux/RowExpander.js"
     );
     
