@@ -4,7 +4,6 @@ GeoExt.Lang.set("de");
 
 var app = new gxp.Viewer({
 
-<<<<<<< HEAD
    /* Sets the proxy to use in order to bypass the Same Origin Policy when accessing remote resources through JavaScript. Only needed when external resources (from outside the OpenGeo Suite instance that your app lives in) are used. Will be set as OpenLayers.ProxyHost. */
    proxy : '/cgi-bin/proxy.cgi?url=',
 
@@ -98,7 +97,7 @@ var app = new gxp.Viewer({
     outputTarget: "map.tbar"
     }*/
    ],
-=======
+
     /* Sets the proxy to use in order to bypass the Same Origin Policy when accessing remote resources through JavaScript. Only needed when external resources (from outside the OpenGeo Suite instance that your app lives in) are used. Will be set as OpenLayers.ProxyHost. */
     proxy : '/cgi-bin/proxy.cgi?url=',
 
