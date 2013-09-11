@@ -78,7 +78,7 @@ var app = new gxp.Viewer(
                 ptype : "gxp_print",
                 actionTarget : "map.tbar" ,
                 printCapabilities: printConfig
-        }
+            }
 			/*, {
 				ptype: "lgv_drawbox",
 				id: "drawbox",
@@ -107,17 +107,25 @@ var app = new gxp.Viewer(
                     xtype: "gxp_scaleoverlay"
                 }],
 			
+			defaultSourceType: "gxp_wmssource",
+			
 			/*Configuration of layer sources available to the viewer, such as MapQuest or a WMS server*/
 			sources : {
 				local : {
-					ptype : "gxp_wmssource",
 					url : "http://wscd0095/fachdaten_public/services/wms",
 					version : "1.1.1"
 				},
 				webatlasde : {
-					ptype : "gxp_wmssource",
 					url : "http://geofos.fhhnet.stadt.hamburg.de/wms_webatlasde",
 					version : "1.1.1"
+				},
+				hhde : {
+				    url: "/wms_hamburgde",
+                    version: "1.1.1"                   
+				},
+				kombiwms: {
+				    url: "http://lgvfds02.fhhnet.stadt.hamburg.de/ArcGIS/services/GBD_Image/Geobasisdaten/MapServer/WMSServer",
+				    version: "1.1.1"
 				},
 				ol : {
 					ptype : "gxp_olsource"
@@ -126,8 +134,7 @@ var app = new gxp.Viewer(
 			
 			/*The configuration for the actual map part of the viewer, such as projection, layers, center and zoom*/
 			map : {
-				id : "mymap", // id needed to reference map in portalConfig
-				// above
+				id : "mymap", // id needed to reference map in portalConfig above
 				// title : "Map",
 				projection : "EPSG:25832",
 				center : [ 565874, 5934140 ],
@@ -138,10 +145,10 @@ var app = new gxp.Viewer(
 						{
 							source : "webatlasde",
 							name : "1",
-							group : "background",
-							isBaseLayer: true
-						},
-						{
+							group : "background"
+    					}, 
+    						//add any OL layer, e.g. wms
+    						{
 							source : "ol",
 							type : "OpenLayers.Layer.WMS",
 							args : [
@@ -153,8 +160,18 @@ var app = new gxp.Viewer(
 										format : 'image/jpeg'
 									} ],
 							group : "background"
-						},
-						//add any OL layer, vector
+						}, {
+                            source : "hhde",
+                            name : "dop",
+                            title: "Luftbilder",
+                            group : "background"
+                        }, {
+                            source : "hhde",
+                            name : "geobasisdaten",
+                            title: "Stadtplan",
+                            group : "background"
+                        }, 
+						//add any OL layer, e.g. vector
 						{
 							source : "ol",
 							type : "OpenLayers.Layer.Vector",
