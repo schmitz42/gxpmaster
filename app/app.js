@@ -31,6 +31,12 @@ var app = new gxp.Viewer({
             width : 200,
             split : true,
             collapsible : true
+        }, {
+            id: "southpanel",
+            xtype: "container",
+            layout: "fit",
+            region: "south",
+            height: 100
         }]
     },
 
@@ -78,6 +84,18 @@ var app = new gxp.Viewer({
         actionTarget : "map.tbar",
         printService : "http://wscd0096:8080/mapfish_print_2/pdf5/info.json?"
         //printCapabilities: printConfig
+    }, {
+        ptype: "lgv_drawbox",
+        id: "drawbox",
+        actionTarget: "map.tbar"
+    }, {
+        ptype: "lgv_boxinfo",
+        boxTool: "drawbox",
+        outputTarget: "southpanel",
+        outputConfig: {
+            title: "whatever",
+            autoScroll: false
+        }
     }
     /*, {
      ptype: "lgv_drawbox",
