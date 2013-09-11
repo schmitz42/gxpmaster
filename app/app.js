@@ -310,7 +310,6 @@ var app = new gxp.Viewer({
             }]
         }]
     }
->>>>>>> 9f632d06288b64cf38269a90d285c11861ed3c94
 
    /*Any items to be added to the map panel, such as a zoom slider*/
    mapItems : [{
