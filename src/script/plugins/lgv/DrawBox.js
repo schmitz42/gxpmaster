@@ -33,7 +33,7 @@ lgv.plugins.DrawBox = Ext.extend(gxp.plugins.Tool, {
                         irregular : true
                     }
                 })
-        });
+            });
         
         var removeAction = new Ext.Action({
             text : 'remove boxes',
@@ -41,10 +41,10 @@ lgv.plugins.DrawBox = Ext.extend(gxp.plugins.Tool, {
                 this.boxLayer.removeAllFeatures();
             },
             scope : this
-        }); 
+        });
         
         return lgv.plugins.DrawBox.superclass.addActions.call(this, [action, removeAction]);
-    }    
+    }
 });
 
 //registers the ptype name as a shortcut for creating the plugin

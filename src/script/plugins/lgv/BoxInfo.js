@@ -27,7 +27,7 @@ lgv.plugins.BoxInfo = Ext.extend(gxp.plugins.Tool, {
         }, config));
     },
     addFeature : function(evt) {
-        var geom = evt.feature.geometry; 
+        var geom = evt.feature.geometry;
         //where does output[0] come from?
         var output = this.output[0];
         output.add({
@@ -38,6 +38,6 @@ lgv.plugins.BoxInfo = Ext.extend(gxp.plugins.Tool, {
         });
         output.doLayout();
     }
-})
+});
 
 Ext.preg(lgv.plugins.BoxInfo.prototype.ptype, lgv.plugins.BoxInfo);
