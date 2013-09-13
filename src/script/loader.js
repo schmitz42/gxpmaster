@@ -119,7 +119,8 @@
         "locale/de.js",
         "ux/RowExpander.js",
         "plugins/lgv/DrawBox.js",
-        "plugins/lgv/BoxInfo.js"
+        "plugins/lgv/BoxInfo.js",
+        "plugins/lgv/Gaz.js"
     );
     
     var scripts = document.getElementsByTagName("script");

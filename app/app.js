@@ -37,6 +37,23 @@ var app = new gxp.Viewer({
             layout: "fit",
             region: "south",
             height: 100
+        }, {
+            id: "eastpanel",
+            xtype: "container",
+            layout: "fit",
+            region: "east",
+            width: 200,
+            items: [
+            {
+             xtype : "gxp_autocompletecombo",
+             // outputTarget: "map.tbar",
+             url : "http://wscd0095/fachdaten_public/services/wfs_bwvi_opendata",
+             fieldName : "name",
+             featureType : "verkehr_parkhaeuser",
+             featurePrefix : "app",
+             emptyText : "Suche nach Parkhaus..."
+            }
+            ]
         }]
     },
 
@@ -93,10 +110,15 @@ var app = new gxp.Viewer({
         boxTool: "drawbox",
         outputTarget: "southpanel",
         outputConfig: {
-            title: "whatever",
+            title: "Box Info",
             autoScroll: false
         }
-    }
+    },{
+        ptype: "lgv_gaz",
+        outputTarget: "map.tbar"
+     }
+     
+    
     /*, {
      ptype: "lgv_drawbox",
      id: "drawbox",
