@@ -83,6 +83,10 @@ var app = new gxp.Viewer({
      }, {
         ptype: "lgv_sendmail",
         outputTarget: "map.tbar"
+     },{
+        ptype: "lgv_help",
+        outputTarget: "map.tbar",
+        url: "http://geofos.fhhnet.stadt.hamburg.de/FHH-Atlas/img/Hilfe-FHH-Atlas.pdf"
      }
     ],
 
