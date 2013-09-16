@@ -138,8 +138,8 @@ var app = new gxp.Viewer({
             source : "webatlasde",
             name : "1",
             group : "background",
-            title : "WebAtlasDe",
-            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877], 
+            title : "WebAtlasDE",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
         },
         //add any OL layer, e.g. wms
         {
@@ -150,19 +150,19 @@ var app = new gxp.Viewer({
                 projection : 'EPSG:25832',
                 format : 'image/jpeg'
             }],
-            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
             group : "background"
         }, {
             source : "hhde",
             name : "dop",
             title : "Luftbilder",            
-            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877],            
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],            
             group : "background"
         }, {
             source : "hhde",
             name : "geobasisdaten",
             title : "Stadtplan",
-            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877], 
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
             group : "background"
         },
         //add any OL layer, e.g. vector
@@ -188,7 +188,7 @@ var app = new gxp.Viewer({
                     strokeWidth : 3
                 })
             }],
-            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877]
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         },
         //add any OL layer, wms
         {
@@ -199,7 +199,7 @@ var app = new gxp.Viewer({
                 format : 'image/jpeg',
                 transparent : true,
             }],
-            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877]
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         }, {
             source : "local",
             name : "parkhaeuser",
@@ -213,7 +213,7 @@ var app = new gxp.Viewer({
                 }
             },
             title: "Parkhäuser",
-            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877]            
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]            
         }]
     }
 
