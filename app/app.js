@@ -74,7 +74,11 @@ var app = new gxp.Viewer({
     },{
         ptype: "lgv_gaz",
         outputTarget: "map.tbar"
+     }, {
+         ptype: "lgv_linktotim",
+         outputTarget: "map.tbar"
      }
+     
     ],
 
     /*Any items to be added to the map panel, such as a zoom slider*/

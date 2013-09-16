@@ -120,7 +120,8 @@
         "ux/RowExpander.js",
         "plugins/lgv/DrawBox.js",
         "plugins/lgv/BoxInfo.js",
-        "plugins/lgv/Gaz.js"
+        "plugins/lgv/Gaz.js",
+        "plugins/lgv/LinkToTim.js"
     );
     
     var scripts = document.getElementsByTagName("script");
