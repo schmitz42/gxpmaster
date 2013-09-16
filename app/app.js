@@ -35,12 +35,12 @@ var app = new gxp.Viewer({
     },
 
     /*A set of tools that you want to use in the application, such as measure tools or a layer tree*/
-    tools : [{
+    tools: [{
         ptype : "gxp_layertree",
         outputConfig : {
             id : "tree",
             border : true,
-            tbar : [] // we will add buttons to "tree.bbar" later
+            tbar : []
         },
         outputTarget : "westpanel"
     }, {
@@ -78,36 +78,39 @@ var app = new gxp.Viewer({
     ],
 
     /*Any items to be added to the map panel, such as a zoom slider*/
-    mapItems : [{
-        xtype : "gx_zoomslider",
-        vertical : true,
+    mapItems: [{
+        xtype: "gx_zoomslider",
+        vertical: true,
+        x: 10,
+        y: 20,
         height : 100
-    }, {
-        xtype : "gxp_scaleoverlay"
+    },
+    {
+        xtype: "gxp_scaleoverlay"
     }],
 
     defaultSourceType : "gxp_wmssource",
 
     /*Configuration of layer sources available to the viewer, such as MapQuest or a WMS server*/
-    sources : {
-        webatlasde : {
-            url : "http://geofos.fhhnet.stadt.hamburg.de/wms_webatlasde",
+    sources: {
+        webatlasde: {
+            url: "http://geofos.fhhnet.stadt.hamburg.de/wms_webatlasde",
+            version: "1.1.1"
+        },
+        hhde: {
+            url: "/wms_hamburgde",
             version : "1.1.1"
         },
-        hhde : {
-            url : "/wms_hamburgde",
-            version : "1.1.1"
+        kombiwms: {
+            url: "http://lgvfds02.fhhnet.stadt.hamburg.de/ArcGIS/services/GBD_Image/Geobasisdaten/MapServer/WMSServer",
+            version: "1.1.1"
         },
-        kombiwms : {
-            url : "http://lgvfds02.fhhnet.stadt.hamburg.de/ArcGIS/services/GBD_Image/Geobasisdaten/MapServer/WMSServer",
-            version : "1.1.1"
+        ol: {
+            ptype: "gxp_olsource"
         },
-        ol : {
-            ptype : "gxp_olsource"
-        },
-        local : {
-            url : "http://wscd0095/fachdaten_public/services/wms",
-            version : "1.1.1"
+        local: {
+            url: "http://wscd0095/fachdaten_public/services/wms",
+            version: "1.1.1"
         }
     },
 
@@ -121,6 +124,7 @@ var app = new gxp.Viewer({
         units : 'm',
         resolutions : [132.29159522920526, 66.14579761460263, 26.458319045841054, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
         maxExtent : [458000.0, 5850000.0, 660000.0, 5990000.0],
+        //controls: [new OpenLayers.Control.ZoomPanel(), ],
         layers : [{
             source : "webatlasde",
             name : "1",
