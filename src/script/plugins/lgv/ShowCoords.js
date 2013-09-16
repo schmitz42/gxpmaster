@@ -16,8 +16,7 @@ lgv.plugins.ShowCoords = Ext.extend(gxp.plugins.Tool, {
               
         var action = new Ext.Action({ 
             tooltip: this.showCoordsTip,
-            //iconCls: "gxp-icon-getfeatureinfo",
-            text: 'showCoords',
+            iconCls: 'lgv-showCoords',
             toggleGroup: this.toggleGroup,
             enableToggle: true,
             allowDepress: true,
