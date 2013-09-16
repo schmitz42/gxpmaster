@@ -157,7 +157,7 @@ var app = new gxp.Viewer({
             source : "hhde",
             name : "dop",
             title : "Luftbilder",
-            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],            
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
             group : "background"
         }, {
             source : "hhde",
@@ -214,7 +214,7 @@ var app = new gxp.Viewer({
                 }
             },
             title: "Parkhäuser",
-            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]            
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         }]
     }
 
