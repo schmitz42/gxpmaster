@@ -82,7 +82,10 @@ var app = new gxp.Viewer({
          actionTarget: "map.tbar"
      }, {
         ptype: "lgv_sendmail",
-        outputTarget: "map.tbar"
+        actionTarget: "map.tbar",
+        tooltip: "Email senden an LGVGeoportal-Hilfe",
+        emailAdress: "LGVGeoPortal-Hilfe@gv.hamburg.de",
+        subject: "Frage zu Geo-Online"
      },{
         ptype: "lgv_help",
         outputTarget: "map.tbar",
