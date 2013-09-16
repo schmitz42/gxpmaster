@@ -99,7 +99,7 @@ var app = new gxp.Viewer({
         xtype: "gxp_scaleoverlay"
     }],
 
-    defaultSourceType : "gxp_wmssource",
+    defaultSourceType : "lgv_wmssource",
 
     /*Configuration of layer sources available to the viewer, such as MapQuest or a WMS server*/
     sources: {
@@ -134,7 +134,7 @@ var app = new gxp.Viewer({
         units : 'm',
         resolutions : [132.29159522920526, 66.14579761460263, 26.458319045841054, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
         maxExtent : [458000.0, 5850000.0, 660000.0, 5990000.0],
-        controls: [new OpenLayers.Control.Navigation(), new OpenLayers.Control.Zoom()],
+        controls: [new OpenLayers.Control.Navigation(), new OpenLayers.Control.Zoom(), new OpenLayers.Control.Attribution()],
         layers : [{
             source : "webatlasde",
             name : "1",
@@ -150,6 +150,8 @@ var app = new gxp.Viewer({
                 layers : '1,5,9,13,17,21',
                 projection : 'EPSG:25832',
                 format : 'image/jpeg'
+            },{
+                attribution: "Kartographie und Gestaltung: <a target='_blank' href ='http://www.geoinfo.hamburg.de'>Landesbetrieb Geoinformation und Vermessung</a>",
             }],
             bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
             group : "background"
@@ -157,12 +159,14 @@ var app = new gxp.Viewer({
             source : "hhde",
             name : "dop",
             title : "Luftbilder",
+            attribution: "Kartographie und Gestaltung: <a target='_blank' href ='http://www.geoinfo.hamburg.de'>Landesbetrieb Geoinformation und Vermessung</a>",
             bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],            
             group : "background"
         }, {
             source : "hhde",
             name : "geobasisdaten",
             title : "Stadtplan",
+            attribution: "Kartographie und Gestaltung: <a target='_blank' href ='http://www.geoinfo.hamburg.de'>Landesbetrieb Geoinformation und Vermessung</a>",
             bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
             group : "background"
         },
