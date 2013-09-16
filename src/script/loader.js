@@ -122,7 +122,8 @@
         "plugins/lgv/BoxInfo.js",
         "plugins/lgv/Gaz.js",
         "plugins/lgv/LinkToTim.js",
-        "plugins/lgv/ShowCoords.js"
+        "plugins/lgv/ShowCoords.js",
+        "plugins/lgv/SendMail.js"
     );
     
     var scripts = document.getElementsByTagName("script");

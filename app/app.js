@@ -40,7 +40,7 @@ var app = new gxp.Viewer({
         outputConfig : {
             id : "tree",
             border : true,
-            tbar : [] // we will add buttons to "tree.bbar" later
+            tbar : []
         },
         outputTarget : "westpanel"
     }, {
@@ -80,6 +80,9 @@ var app = new gxp.Viewer({
      },  {
          ptype: "lgv_showcoords",
          actionTarget: "map.tbar"
+     }, {
+        ptype: "lgv_sendmail",
+        outputTarget: "map.tbar"
      }
     ],
 
@@ -87,8 +90,11 @@ var app = new gxp.Viewer({
     mapItems : [{
         xtype : "gx_zoomslider",
         vertical : true,
+        x: 10,
+        y: 20,
         height : 100
-    }, {
+    },
+    {
         xtype : "gxp_scaleoverlay"
     }],
 
@@ -127,6 +133,7 @@ var app = new gxp.Viewer({
         units : 'm',
         resolutions : [132.29159522920526, 66.14579761460263, 26.458319045841054, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
         maxExtent : [458000.0, 5850000.0, 660000.0, 5990000.0],
+        controls: [],
         layers : [{
             source : "webatlasde",
             name : "1",
