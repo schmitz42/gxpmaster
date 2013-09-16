@@ -7,7 +7,6 @@ lgv.plugins.DrawBox = Ext.extend(gxp.plugins.Tool, {
         var map = this.boxLayer && this.boxLayer.map;
         if (map) {
             map.setLayerIndex(this.boxLayer, map.layers.length);
-            console.log(map.getLayerIndex(this.boxLayer));
         }
     },
 
@@ -19,7 +18,6 @@ lgv.plugins.DrawBox = Ext.extend(gxp.plugins.Tool, {
         map.addLayers([this.boxLayer]);
         // keep our vector layer on top so that it's visible
         map.events.on({
-            //addlayer : this.raiseLayer,
             scope : this
         });
         var layer = this.boxLayer;
