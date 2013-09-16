@@ -27,3 +27,12 @@
 /*****Ende****** ZoomSlider ZoomIn ZoomOut *****Ende*****/
 
 .lgv-showCoords { background-image: url(img/lgv/center.png); }
+
+.olControlAttribution {
+    font-size: smaller;
+    left: 1em;
+    bottom: 0.5em;
+    position: absolute;
+    display: block;
+    z-index: 5000;
+}

@@ -95,7 +95,6 @@
         "plugins/QueryForm.js",
         "plugins/LayerTree.js",
         "plugins/LayerManager.js",
-        "plugins/AddLayers.js",
         "plugins/RemoveLayer.js",
         "plugins/SelectedFeatureActions.js",
         "plugins/SnappingAgent.js",
@@ -124,7 +123,9 @@
         "plugins/lgv/Help.js",
         "plugins/lgv/LinkToTim.js",
         "plugins/lgv/ShowCoords.js",
-        "plugins/lgv/SendMail.js"
+        "plugins/lgv/SendMail.js",
+        "plugins/lgv/WMSSource.js",
+        "plugins/lgv/AddLayers.js"
     );
     
     var scripts = document.getElementsByTagName("script");
