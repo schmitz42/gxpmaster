@@ -6,7 +6,7 @@ var app = new gxp.Viewer({
 
     /* Sets the proxy to use in order to bypass the Same Origin Policy when accessing remote resources through JavaScript. Only needed when external resources (from outside the OpenGeo Suite instance that your app lives in) are used. Will be set as OpenLayers.ProxyHost. */
     proxy : '/cgi-bin/proxy.cgi?url=',
-
+    
     /* The items to add to the portal, in addition to the map panel that the viewer will create automatically. */
     //portalItems: configured below in portalConfig.items
 
@@ -129,10 +129,6 @@ var app = new gxp.Viewer({
 
     /*Configuration of layer sources available to the viewer, such as MapQuest or a WMS server*/
     sources : {
-        local : {
-            url : "http://wscd0095/fachdaten_public/services/wms",
-            version : "1.1.1"
-        },
         webatlasde : {
             url : "http://geofos.fhhnet.stadt.hamburg.de/wms_webatlasde",
             version : "1.1.1"
@@ -147,6 +143,10 @@ var app = new gxp.Viewer({
         },
         ol : {
             ptype : "gxp_olsource"
+        },
+        local : {
+            url : "http://wscd0095/fachdaten_public/services/wms",
+            version : "1.1.1"
         }
     },
 
@@ -197,7 +197,6 @@ var app = new gxp.Viewer({
                     srsName : 'epsg:25832',
                     version : '1.1.0'
                 }),
-                visibility : true,
                 strategies : [new OpenLayers.Strategy.Fixed()],
                 // style features invisible; only used
                 // to generate fast popups from
@@ -209,6 +208,16 @@ var app = new gxp.Viewer({
                     strokeOpacity : 0,
                     strokeWidth : 3
                 })
+            }]
+        },
+        //add any OL layer, wms
+        {
+            source : "ol",
+            type : "OpenLayers.Layer.WMS",
+            args : ["Verkehrslage auf Autobahnen", "http://wscd0095/fachdaten_public/services/wms", {
+                layers : 'bab_vkl,bab_novkl',
+                format : 'image/jpeg',
+                transparent : true,
             }]
         }, {
             source : "local",
@@ -222,16 +231,6 @@ var app = new gxp.Viewer({
                     "name" : "Name"
                 }
             }
-        },
-        //add any OL layer, wms
-        {
-            source : "ol",
-            type : "OpenLayers.Layer.WMS",
-            args : ["Verkehrslage auf Autobahnen", "http://wscd0095/fachdaten_public/services/wms", {
-                layers : 'bab_vkl,bab_novkl',
-                format : 'image/jpeg',
-                transparent : true
-            }]
         }]
     }
 
