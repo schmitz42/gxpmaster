@@ -127,7 +127,9 @@ var app = new gxp.Viewer({
         layers : [{
             source : "webatlasde",
             name : "1",
-            group : "background"
+            group : "background",
+            title : "WebAtlasDe",
+            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877], 
         },
         //add any OL layer, e.g. wms
         {
@@ -138,16 +140,19 @@ var app = new gxp.Viewer({
                 projection : 'EPSG:25832',
                 format : 'image/jpeg'
             }],
+            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877],
             group : "background"
         }, {
             source : "hhde",
             name : "dop",
-            title : "Luftbilder",
+            title : "Luftbilder",            
+            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877],            
             group : "background"
         }, {
             source : "hhde",
             name : "geobasisdaten",
             title : "Stadtplan",
+            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877], 
             group : "background"
         },
         //add any OL layer, e.g. vector
@@ -172,7 +177,8 @@ var app = new gxp.Viewer({
                     strokeOpacity : 0,
                     strokeWidth : 3
                 })
-            }]
+            }],
+            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877]
         },
         //add any OL layer, wms
         {
@@ -182,7 +188,8 @@ var app = new gxp.Viewer({
                 layers : 'bab_vkl,bab_novkl',
                 format : 'image/jpeg',
                 transparent : true,
-            }]
+            }],
+            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877]
         }, {
             source : "local",
             name : "parkhaeuser",
@@ -194,7 +201,9 @@ var app = new gxp.Viewer({
                     "id" : "ID",
                     "name" : "Name"
                 }
-            }
+            },
+            title: "Parkhäuser",
+            bbox: [239535.020508, 997871.257038, 6121062.37546, 5226625.65877]            
         }]
     }
 
