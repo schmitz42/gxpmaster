@@ -121,7 +121,8 @@
         "plugins/lgv/DrawBox.js",
         "plugins/lgv/BoxInfo.js",
         "plugins/lgv/Gaz.js",
-        "plugins/lgv/SendMail.js"
+        "plugins/lgv/SendMail.js",
+        "plugins/lgv/Help.js"
     );
     
     var scripts = document.getElementsByTagName("script");
