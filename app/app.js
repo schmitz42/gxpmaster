@@ -31,7 +31,7 @@ var app = new gxp.Viewer({
             width : 200,
             split : true,
             collapsible : true
-        }
+        }]
     },
 
     /*A set of tools that you want to use in the application, such as measure tools or a layer tree*/
