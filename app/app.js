@@ -75,6 +75,12 @@ var app = new gxp.Viewer({
         ptype: "lgv_gaz",
         outputTarget: "map.tbar"
      },{
+         ptype: "lgv_linktotim",
+         actionTarget: "map.tbar"
+     },  {
+         ptype: "lgv_showcoords",
+         actionTarget: "map.tbar"
+     }, {
         ptype: "lgv_sendmail",
         outputTarget: "map.tbar"
      }
@@ -132,7 +138,9 @@ var app = new gxp.Viewer({
         layers : [{
             source : "webatlasde",
             name : "1",
-            group : "background"
+            group : "background",
+            title : "WebAtlasDE",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
         },
         //add any OL layer, e.g. wms
         {
@@ -143,16 +151,19 @@ var app = new gxp.Viewer({
                 projection : 'EPSG:25832',
                 format : 'image/jpeg'
             }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
             group : "background"
         }, {
             source : "hhde",
             name : "dop",
             title : "Luftbilder",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],            
             group : "background"
         }, {
             source : "hhde",
             name : "geobasisdaten",
             title : "Stadtplan",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
             group : "background"
         },
         //add any OL layer, e.g. vector
@@ -177,7 +188,8 @@ var app = new gxp.Viewer({
                     strokeOpacity : 0,
                     strokeWidth : 3
                 })
-            }]
+            }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         },
         //add any OL layer, wms
         {
@@ -187,7 +199,8 @@ var app = new gxp.Viewer({
                 layers : 'bab_vkl,bab_novkl',
                 format : 'image/jpeg',
                 transparent : true,
-            }]
+            }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         }, {
             source : "local",
             name : "parkhaeuser",
@@ -199,7 +212,9 @@ var app = new gxp.Viewer({
                     "id" : "ID",
                     "name" : "Name"
                 }
-            }
+            },
+            title: "Parkhäuser",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]            
         }]
     }
 
