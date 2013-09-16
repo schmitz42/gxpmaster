@@ -121,7 +121,8 @@
         "plugins/lgv/DrawBox.js",
         "plugins/lgv/BoxInfo.js",
         "plugins/lgv/Gaz.js",
-        "plugins/lgv/LinkToTim.js"
+        "plugins/lgv/LinkToTim.js",
+        "plugins/lgv/ShowCoords.js"
     );
     
     var scripts = document.getElementsByTagName("script");
