@@ -31,30 +31,7 @@ var app = new gxp.Viewer({
             width : 200,
             split : true,
             collapsible : true
-        }, {
-            id: "southpanel",
-            xtype: "container",
-            layout: "fit",
-            region: "south",
-            height: 100
-        }, {
-            id: "eastpanel",
-            xtype: "container",
-            layout: "fit",
-            region: "east",
-            width: 200,
-            items: [
-            {
-             xtype : "gxp_autocompletecombo",
-             // outputTarget: "map.tbar",
-             url : "http://wscd0095/fachdaten_public/services/wfs_bwvi_opendata",
-             fieldName : "name",
-             featureType : "verkehr_parkhaeuser",
-             featurePrefix : "app",
-             emptyText : "Suche nach Parkhaus..."
-            }
-            ]
-        }]
+        }
     },
 
     /*A set of tools that you want to use in the application, such as measure tools or a layer tree*/
@@ -76,12 +53,6 @@ var app = new gxp.Viewer({
         ptype : 'gxp_measure',
         actionTarget : "map.tbar"
     }, {
-        ptype : "gxp_zoomtoextent",
-        actionTarget : "map.tbar"
-    }, {
-        ptype : "gxp_zoom",
-        actionTarget : "map.tbar"
-    }, {
         ptype : "gxp_navigationhistory",
         actionTarget : "map.tbar"
     }, {
@@ -92,50 +63,18 @@ var app = new gxp.Viewer({
         }
     }, {
         ptype : "gxp_zoomtolayerextent",
-        actionTarget : ["tree.tbar", "tree.contextMenu"]
+        actionTarget : ["tree.contextMenu"]
     }, {
         ptype : "gxp_legend",
         actionTarget : "tree.tbar"
     }, {
         ptype : "gxp_print",
         actionTarget : "map.tbar",
-        printService : "http://wscd0096:8080/mapfish_print_2/pdf5/info.json?"
-        //printCapabilities: printConfig
-    }, {
-        ptype: "lgv_drawbox",
-        id: "drawbox",
-        actionTarget: "map.tbar"
-    }, {
-        ptype: "lgv_boxinfo",
-        boxTool: "drawbox",
-        outputTarget: "southpanel",
-        outputConfig: {
-            title: "Box Info",
-            autoScroll: false
-        }
+        printService : "http://wscd0096:8080/mapfish_print_2/pdf5/info.json?"        
     },{
         ptype: "lgv_gaz",
         outputTarget: "map.tbar"
      }
-     
-    
-    /*, {
-     ptype: "lgv_drawbox",
-     id: "drawbox",
-     actionTarget: "map.tbar", //where the action appears
-     outputTarget: "map"	//where output is placed
-     },{
-     ptype: "lgv_boxinfo",
-     boxTool: "drawbox",
-     tplText: "AREA:{area}",
-     outputTarget: "eastpanel",
-     outputConfig: {
-     title: 'boxinfo'
-     }
-     }, {
-     ptype: "lgv_gaz",
-     outputTarget: "map.tbar"
-     }*/
     ],
 
     /*Any items to be added to the map panel, such as a zoom slider*/
