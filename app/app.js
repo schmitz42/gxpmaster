@@ -74,6 +74,9 @@ var app = new gxp.Viewer({
     },{
         ptype: "lgv_gaz",
         outputTarget: "map.tbar"
+     },{
+        ptype: "lgv_sendmail",
+        outputTarget: "map.tbar"
      }
     ],
 
