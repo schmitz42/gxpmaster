@@ -138,6 +138,7 @@ var app = new gxp.Viewer({
         units : 'm',
         resolutions : [132.29159522920526, 66.14579761460263, 26.458319045841054, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
         maxExtent : [458000.0, 5850000.0, 660000.0, 5990000.0],
+		restrictedExtent: [458000.0, 5850000.0, 640000.0, 5990000.0],
         controls: [new OpenLayers.Control.Navigation(), new OpenLayers.Control.Zoom()],
         layers : [{
             source : "webatlasde",
