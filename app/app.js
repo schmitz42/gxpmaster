@@ -40,7 +40,7 @@ var app = new gxp.Viewer({
         outputConfig : {
             id : "tree",
             border : true,
-            tbar : [] // we will add buttons to "tree.bbar" later
+            tbar : []
         },
         outputTarget : "westpanel"
     }, {
@@ -75,6 +75,12 @@ var app = new gxp.Viewer({
         ptype: "lgv_gaz",
         outputTarget: "map.tbar"
      },{
+         ptype: "lgv_linktotim",
+         actionTarget: "map.tbar"
+     },  {
+         ptype: "lgv_showcoords",
+         actionTarget: "map.tbar"
+     }, {
         ptype: "lgv_sendmail",
         outputTarget: "map.tbar"
      },{
@@ -88,8 +94,12 @@ var app = new gxp.Viewer({
     mapItems : [{
         xtype : "gx_zoomslider",
         vertical : true,
-        height : 100
-    }, {
+        x: 10,
+        y: 20,
+        height : 100,
+        aggressive: true
+    },
+    {
         xtype : "gxp_scaleoverlay"
     }],
 
@@ -128,10 +138,13 @@ var app = new gxp.Viewer({
         units : 'm',
         resolutions : [132.29159522920526, 66.14579761460263, 26.458319045841054, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
         maxExtent : [458000.0, 5850000.0, 660000.0, 5990000.0],
+        controls: [new OpenLayers.Control.Navigation(), new OpenLayers.Control.Zoom()],
         layers : [{
             source : "webatlasde",
             name : "1",
-            group : "background"
+            group : "background",
+            title : "WebAtlasDE",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
         },
         //add any OL layer, e.g. wms
         {
@@ -142,16 +155,19 @@ var app = new gxp.Viewer({
                 projection : 'EPSG:25832',
                 format : 'image/jpeg'
             }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
             group : "background"
         }, {
             source : "hhde",
             name : "dop",
             title : "Luftbilder",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],            
             group : "background"
         }, {
             source : "hhde",
             name : "geobasisdaten",
             title : "Stadtplan",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
             group : "background"
         },
         //add any OL layer, e.g. vector
@@ -176,7 +192,8 @@ var app = new gxp.Viewer({
                     strokeOpacity : 0,
                     strokeWidth : 3
                 })
-            }]
+            }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         },
         //add any OL layer, wms
         {
@@ -186,7 +203,8 @@ var app = new gxp.Viewer({
                 layers : 'bab_vkl,bab_novkl',
                 format : 'image/jpeg',
                 transparent : true,
-            }]
+            }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         }, {
             source : "local",
             name : "parkhaeuser",
@@ -198,7 +216,9 @@ var app = new gxp.Viewer({
                     "id" : "ID",
                     "name" : "Name"
                 }
-            }
+            },
+            title: "Parkhäuser",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]            
         }]
     }
 
