@@ -6,7 +6,7 @@ var app = new gxp.Viewer({
 
     /* Sets the proxy to use in order to bypass the Same Origin Policy when accessing remote resources through JavaScript. Only needed when external resources (from outside the OpenGeo Suite instance that your app lives in) are used. Will be set as OpenLayers.ProxyHost. */
     proxy : '/cgi-bin/proxy.cgi?url=',
-    
+
     /* The items to add to the portal, in addition to the map panel that the viewer will create automatically. */
     //portalItems: configured below in portalConfig.items
 
@@ -35,7 +35,7 @@ var app = new gxp.Viewer({
     },
 
     /*A set of tools that you want to use in the application, such as measure tools or a layer tree*/
-    tools: [{
+    tools : [{
         ptype : "gxp_layertree",
         outputConfig : {
             id : "tree",
@@ -83,44 +83,48 @@ var app = new gxp.Viewer({
      }, {
         ptype: "lgv_sendmail",
         outputTarget: "map.tbar"
+     },{
+        ptype: "lgv_help",
+        outputTarget: "map.tbar",
+        url: "http://geofos.fhhnet.stadt.hamburg.de/FHH-Atlas/img/Hilfe-FHH-Atlas.pdf"
      }
     ],
 
     /*Any items to be added to the map panel, such as a zoom slider*/
-    mapItems: [{
-        xtype: "gx_zoomslider",
-        vertical: true,
+    mapItems : [{
+        xtype : "gx_zoomslider",
+        vertical : true,
         x: 10,
         y: 20,
         height : 100,
         aggressive: true
     },
     {
-        xtype: "gxp_scaleoverlay"
+        xtype : "gxp_scaleoverlay"
     }],
 
     defaultSourceType : "gxp_wmssource",
 
     /*Configuration of layer sources available to the viewer, such as MapQuest or a WMS server*/
-    sources: {
-        webatlasde: {
-            url: "http://geofos.fhhnet.stadt.hamburg.de/wms_webatlasde",
-            version: "1.1.1"
-        },
-        hhde: {
-            url: "/wms_hamburgde",
+    sources : {
+        webatlasde : {
+            url : "http://geofos.fhhnet.stadt.hamburg.de/wms_webatlasde",
             version : "1.1.1"
         },
-        kombiwms: {
-            url: "http://lgvfds02.fhhnet.stadt.hamburg.de/ArcGIS/services/GBD_Image/Geobasisdaten/MapServer/WMSServer",
-            version: "1.1.1"
+        hhde : {
+            url : "/wms_hamburgde",
+            version : "1.1.1"
         },
-        ol: {
-            ptype: "gxp_olsource"
+        kombiwms : {
+            url : "http://lgvfds02.fhhnet.stadt.hamburg.de/ArcGIS/services/GBD_Image/Geobasisdaten/MapServer/WMSServer",
+            version : "1.1.1"
         },
-        local: {
-            url: "http://wscd0095/fachdaten_public/services/wms",
-            version: "1.1.1"
+        ol : {
+            ptype : "gxp_olsource"
+        },
+        local : {
+            url : "http://wscd0095/fachdaten_public/services/wms",
+            version : "1.1.1"
         }
     },
 
@@ -157,7 +161,7 @@ var app = new gxp.Viewer({
             source : "hhde",
             name : "dop",
             title : "Luftbilder",
-            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],            
             group : "background"
         }, {
             source : "hhde",
@@ -214,7 +218,7 @@ var app = new gxp.Viewer({
                 }
             },
             title: "Parkhäuser",
-            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]            
         }]
     }
 

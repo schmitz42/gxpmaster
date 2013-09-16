@@ -1,6 +1,7 @@
 @import "all.css";
 
 .mailtoActionCSS { background-image: url(img/lgv/email.png); }
+.helpActionCSS { background-image: url(img/lgv/help.png); }
 
 /*****Anfang****** ZoomSlider ZoomIn ZoomOut *****Anfang******/
 .olControlZoom a{
@@ -26,4 +27,3 @@
 /*****Ende****** ZoomSlider ZoomIn ZoomOut *****Ende*****/
 
 .lgv-showCoords { background-image: url(img/lgv/center.png); }
-

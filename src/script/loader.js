@@ -120,6 +120,7 @@
         "plugins/lgv/DrawBox.js",
         "plugins/lgv/BoxInfo.js",
         "plugins/lgv/Gaz.js",
+        "plugins/lgv/Help.js",
         "plugins/lgv/LinkToTim.js",
         "plugins/lgv/ShowCoords.js",
         "plugins/lgv/SendMail.js",
