@@ -10,7 +10,7 @@ lgv.plugins.ShowCoords = Ext.extend(gxp.plugins.Tool, {
         var map = this.target.mapPanel.map;
         
         var showCoords = function(e){
-            var clickedLonLat = this.getLonLatFromPixel(new OpenLayers.Pixel(e.clientX, e.clientY));
+            var clickedLonLat = this.getLonLatFromPixel(new OpenLayers.Pixel(e.xy.x, e.xy.y));
             Ext.MessageBox.alert('Koordinate: ', Math.round(clickedLonLat.lon) + ', ' + Math.round(clickedLonLat.lat));
         }
               
