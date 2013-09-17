@@ -88,7 +88,7 @@ var app = new gxp.Viewer({
         subject: "Frage zu Geo-Online"
      },{
         ptype: "lgv_help",
-        outputTarget: "map.tbar",
+        actionTarget: "map.tbar",
         url: "http://geofos.fhhnet.stadt.hamburg.de/FHH-Atlas/img/Hilfe-FHH-Atlas.pdf"
      }
     ],
