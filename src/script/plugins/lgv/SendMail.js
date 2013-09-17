@@ -36,11 +36,11 @@ lgv.plugins.SendMail = Ext.extend(gxp.plugins.Tool, {
     var subject = this.subject;
     
 	var action = new Ext.Action({
-        tooltip: 'Email senden an LGVGeoPortal-Hilfe',
+        tooltip: tooltip,
 		iconCls: 'mailtoActionCSS',
 	    handler: function(){
            var mail = "mailto:" + email +"?";
-		   mail += "subject=Frage%20zu%20Geo-Online&";
+		   mail += "subject=" + subject;
 		   mail += "body=Zur%20weiteren%20Bearbeitung%20bitten%20wir%20Sie%20die%20nachstehenden%20Angaben%20zu%20machen.";
 		   mail += "%20Bei%20Bedarf%20fuegen%20Sie%20bitte%20noch%20einen%20Screenshot%20hinzu.%20Vielen%20Dank!";
 		   mail += "%0A%0A1.%20Name:";
