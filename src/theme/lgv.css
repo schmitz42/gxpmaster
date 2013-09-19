@@ -1,0 +1,38 @@
+@import "all.css";
+
+.mailtoActionCSS { background-image: url(img/lgv/email.png); }
+.helpActionCSS { background-image: url(img/lgv/help.png); }
+
+/*****Anfang****** ZoomSlider ZoomIn ZoomOut *****Anfang******/
+.olControlZoom a{
+    background-image: url("http://extjs.cachefly.net/ext-3.4.0/resources/images/gray/panel/tool-sprites.gif");
+    font-size: 0;
+    height: 15px;
+    width: 15px;
+}
+
+.olControlZoomOut {
+	position: absolute;
+	top: 120px;
+	left: 13px;
+	background-position: 15px -255px;
+}
+
+.olControlZoomIn {
+	position: absolute;
+	top: 5px;
+	left: 13px;
+	background-position: 15px -240px;
+}
+/*****Ende****** ZoomSlider ZoomIn ZoomOut *****Ende*****/
+
+.lgv-showCoords { background-image: url(img/lgv/center.png); }
+
+.olControlAttribution {
+    font-size: smaller;
+    left: 1em;
+    bottom: 0.5em;
+    position: absolute;
+    display: block;
+    z-index: 5000;
+}

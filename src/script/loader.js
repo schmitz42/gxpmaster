@@ -95,7 +95,6 @@
         "plugins/QueryForm.js",
         "plugins/LayerTree.js",
         "plugins/LayerManager.js",
-        "plugins/AddLayers.js",
         "plugins/RemoveLayer.js",
         "plugins/SelectedFeatureActions.js",
         "plugins/SnappingAgent.js",
@@ -121,7 +120,14 @@
         "plugins/lgv/DrawBox.js",
         "plugins/lgv/BoxInfo.js",
         "plugins/lgv/Gaz.js",
-        "plugins/lgv/Measure.js"
+        "plugins/lgv/Measure.js",
+        "plugins/lgv/Help.js",
+        "plugins/lgv/LinkToTim.js",
+        "plugins/lgv/ShowCoords.js",
+        "plugins/lgv/SendMail.js",
+        "plugins/lgv/WMSSource.js",
+        "plugins/lgv/AddLayers.js",
+        "plugins/lgv/WMSGetFeatureInfo.js"
     );
     
     var scripts = document.getElementsByTagName("script");

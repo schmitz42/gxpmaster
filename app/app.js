@@ -40,7 +40,7 @@ var app = new gxp.Viewer({
         outputConfig : {
             id : "tree",
             border : true,
-            tbar : [] // we will add buttons to "tree.bbar" later
+            tbar : []
         },
         outputTarget : "westpanel"
     }, {
@@ -56,11 +56,14 @@ var app = new gxp.Viewer({
         ptype : "gxp_navigationhistory",
         actionTarget : "map.tbar"
     }, {
-        ptype : "gxp_wmsgetfeatureinfo",
+        ptype : "lgv_wmsgetfeatureinfo",
         format : 'grid',
+        id: "gfi",
         outputConfig : {
             width : 400
-        }
+        },
+        //makes gfi-control be activated by default; no button needed; other click events on the map need to take care of de/activating control by calling de/activate() on this tool using its id, e.g. plugins/lgv/ShowCoords.
+        actionTarget: false
     }, {
         ptype : "gxp_zoomtolayerextent",
         actionTarget : ["tree.contextMenu"]
@@ -74,6 +77,23 @@ var app = new gxp.Viewer({
     },{
         ptype: "lgv_gaz",
         outputTarget: "map.tbar"
+     },{
+         ptype: "lgv_linktotim",
+         actionTarget: "map.tbar"
+     },  {
+         ptype: "lgv_showcoords",
+         actionTarget: "map.tbar",
+         gfiId: "gfi"
+     }, {
+        ptype: "lgv_sendmail",
+        actionTarget: "map.tbar",
+        tooltip: "Email senden an LGVGeoportal-Hilfe",
+        emailAdress: "LGVGeoPortal-Hilfe@gv.hamburg.de",
+        subject: "Frage zu Geo-Online"
+     },{
+        ptype: "lgv_help",
+        actionTarget: "map.tbar",
+        url: "http://geofos.fhhnet.stadt.hamburg.de/FHH-Atlas/img/Hilfe-FHH-Atlas.pdf"
      }
     ],
 
@@ -81,12 +101,16 @@ var app = new gxp.Viewer({
     mapItems : [{
         xtype : "gx_zoomslider",
         vertical : true,
-        height : 100
-    }, {
+        x: 10,
+        y: 20,
+        height : 100,
+        aggressive: true
+    },
+    {
         xtype : "gxp_scaleoverlay"
     }],
 
-    defaultSourceType : "gxp_wmssource",
+    defaultSourceType : "lgv_wmssource",
 
     /*Configuration of layer sources available to the viewer, such as MapQuest or a WMS server*/
     sources : {
@@ -121,10 +145,14 @@ var app = new gxp.Viewer({
         units : 'm',
         resolutions : [132.29159522920526, 66.14579761460263, 26.458319045841054, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
         maxExtent : [458000.0, 5850000.0, 660000.0, 5990000.0],
+		restrictedExtent: [458000.0, 5850000.0, 640000.0, 5990000.0],
+        controls: [new OpenLayers.Control.Navigation(), new OpenLayers.Control.Zoom(), new OpenLayers.Control.Attribution()],
         layers : [{
             source : "webatlasde",
             name : "1",
-            group : "background"
+            group : "background",
+            title : "WebAtlasDE",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
         },
         //add any OL layer, e.g. wms
         {
@@ -134,17 +162,24 @@ var app = new gxp.Viewer({
                 layers : '1,5,9,13,17,21',
                 projection : 'EPSG:25832',
                 format : 'image/jpeg'
+            },{
+                attribution: "Kartographie und Gestaltung: <a target='_blank' href ='http://www.geoinfo.hamburg.de'>Landesbetrieb Geoinformation und Vermessung</a>",
             }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
             group : "background"
         }, {
             source : "hhde",
             name : "dop",
             title : "Luftbilder",
+            attribution: "Kartographie und Gestaltung: <a target='_blank' href ='http://www.geoinfo.hamburg.de'>Landesbetrieb Geoinformation und Vermessung</a>",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],            
             group : "background"
         }, {
             source : "hhde",
             name : "geobasisdaten",
             title : "Stadtplan",
+            attribution: "Kartographie und Gestaltung: <a target='_blank' href ='http://www.geoinfo.hamburg.de'>Landesbetrieb Geoinformation und Vermessung</a>",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
             group : "background"
         },
         //add any OL layer, e.g. vector
@@ -169,7 +204,8 @@ var app = new gxp.Viewer({
                     strokeOpacity : 0,
                     strokeWidth : 3
                 })
-            }]
+            }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         },
         //add any OL layer, wms
         {
@@ -178,12 +214,21 @@ var app = new gxp.Viewer({
             args : ["Verkehrslage auf Autobahnen", "http://wscd0095/fachdaten_public/services/wms", {
                 layers : 'bab_vkl,bab_novkl',
                 format : 'image/jpeg',
-                transparent : true,
-            }]
+                transparent : true
+            },{
+                queryable: true,
+                getFeatureInfo : {
+                    fields : ["vkl_id", "klasse"],
+                    propertyNames : {
+                        "vkl_id" : "ID",
+                        "klasse" : "Stauklasse"
+                    }
+            }   
+            }],
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         }, {
             source : "local",
             name : "parkhaeuser",
-            selected : true,
             tiled : false,
             getFeatureInfo : {
                 fields : ["id", "name"],
@@ -191,8 +236,21 @@ var app = new gxp.Viewer({
                     "id" : "ID",
                     "name" : "Name"
                 }
+            },
+            title: "Parkhäuser",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
+            //needed to avoid capabilities loading, when using getfeatureinfo
+            queryable: true          
+        }, {
+            source : "local",
+            name : "baustellen_prod",
+            tiled : false,
+            title: "Baustellen",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
+            //needed to avoid capabilities loading, when using getfeatureinfo
+            queryable: true
             }
-        }]
+        ]
     }
 
 });
