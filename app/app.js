@@ -50,7 +50,7 @@ var app = new gxp.Viewer({
         ptype : "gxp_removelayer",
         actionTarget : ["tree.tbar", "tree.contextMenu"]
     }, {
-        ptype : 'gxp_measure',
+        ptype : 'lgv_measure',
         actionTarget : "map.tbar"
     }, {
         ptype : "gxp_navigationhistory",
