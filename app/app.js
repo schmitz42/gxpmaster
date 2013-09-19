@@ -56,11 +56,14 @@ var app = new gxp.Viewer({
         ptype : "gxp_navigationhistory",
         actionTarget : "map.tbar"
     }, {
-        ptype : "gxp_wmsgetfeatureinfo",
+        ptype : "lgv_wmsgetfeatureinfo",
         format : 'grid',
+        id: "gfi",
         outputConfig : {
             width : 400
-        }
+        },
+        //makes gfi-control be activated by default; no button needed; other click events on the map need to take care of de/activating control by calling de/activate() on this tool using its id, e.g. plugins/lgv/ShowCoords.
+        actionTarget: false
     }, {
         ptype : "gxp_zoomtolayerextent",
         actionTarget : ["tree.contextMenu"]
@@ -79,7 +82,8 @@ var app = new gxp.Viewer({
          actionTarget: "map.tbar"
      },  {
          ptype: "lgv_showcoords",
-         actionTarget: "map.tbar"
+         actionTarget: "map.tbar",
+         gfiId: "gfi"
      }, {
         ptype: "lgv_sendmail",
         actionTarget: "map.tbar",
@@ -210,13 +214,21 @@ var app = new gxp.Viewer({
             args : ["Verkehrslage auf Autobahnen", "http://wscd0095/fachdaten_public/services/wms", {
                 layers : 'bab_vkl,bab_novkl',
                 format : 'image/jpeg',
-                transparent : true,
+                transparent : true
+            },{
+                queryable: true,
+                getFeatureInfo : {
+                    fields : ["vkl_id", "klasse"],
+                    propertyNames : {
+                        "vkl_id" : "ID",
+                        "klasse" : "Stauklasse"
+                    }
+            }   
             }],
             bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         }, {
             source : "local",
             name : "parkhaeuser",
-            selected : true,
             tiled : false,
             getFeatureInfo : {
                 fields : ["id", "name"],
@@ -226,8 +238,19 @@ var app = new gxp.Viewer({
                 }
             },
             title: "Parkhäuser",
-            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]            
-        }]
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
+            //needed to avoid capabilities loading, when using getfeatureinfo
+            queryable: true          
+        }, {
+            source : "local",
+            name : "baustellen_prod",
+            tiled : false,
+            title: "Baustellen",
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
+            //needed to avoid capabilities loading, when using getfeatureinfo
+            queryable: true
+        }
+        ]
     }
 
 });
