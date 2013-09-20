@@ -127,11 +127,8 @@
         "plugins/lgv/SendMail.js",
         "plugins/lgv/WMSSource.js",
         "plugins/lgv/AddLayers.js",
-<<<<<<< HEAD
-        "plugins/lgv/BaseLayer.js"
-=======
+        "plugins/lgv/BaseLayer.js",
         "plugins/lgv/WMSGetFeatureInfo.js"
->>>>>>> c9e546151da25605275035f72f650c2cfe533535
     );
     
     var scripts = document.getElementsByTagName("script");
