@@ -6,7 +6,7 @@ var app = new gxp.Viewer({
 
     /* Sets the proxy to use in order to bypass the Same Origin Policy when accessing remote resources through JavaScript. Only needed when external resources (from outside the OpenGeo Suite instance that your app lives in) are used. Will be set as OpenLayers.ProxyHost. */
     proxy : '/cgi-bin/proxy.cgi?url=',
-
+    
     /* The items to add to the portal, in addition to the map panel that the viewer will create automatically. */
     //portalItems: configured below in portalConfig.items
 
@@ -50,7 +50,7 @@ var app = new gxp.Viewer({
         ptype : "gxp_removelayer",
         actionTarget : ["tree.tbar", "tree.contextMenu"]
     }, {
-        ptype : 'gxp_measure',
+        ptype : 'lgv_measure',
         actionTarget : "map.tbar"
     }, {
         ptype : "gxp_navigationhistory",
@@ -249,7 +249,7 @@ var app = new gxp.Viewer({
             bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
             //needed to avoid capabilities loading, when using getfeatureinfo
             queryable: true
-        }
+            }
         ]
     }
 
