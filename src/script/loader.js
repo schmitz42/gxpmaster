@@ -125,7 +125,8 @@
         "plugins/lgv/ShowCoords.js",
         "plugins/lgv/SendMail.js",
         "plugins/lgv/WMSSource.js",
-        "plugins/lgv/AddLayers.js"
+        "plugins/lgv/AddLayers.js",
+        "plugins/lgv/BaseLayer.js"
     );
     
     var scripts = document.getElementsByTagName("script");

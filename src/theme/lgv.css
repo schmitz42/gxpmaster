@@ -1,4 +1,5 @@
 @import "all.css";
+@import "baseLayer.css";
 
 .mailtoActionCSS { background-image: url(img/lgv/email.png); }
 .helpActionCSS { background-image: url(img/lgv/help.png); }

@@ -90,6 +90,8 @@ var app = new gxp.Viewer({
         ptype: "lgv_help",
         outputTarget: "map.tbar",
         url: "http://geofos.fhhnet.stadt.hamburg.de/FHH-Atlas/img/Hilfe-FHH-Atlas.pdf"
+     },{
+        ptype: "lgv_baselayer"
      }
     ],
 
@@ -141,36 +143,18 @@ var app = new gxp.Viewer({
         units : 'm',
         resolutions : [132.29159522920526, 66.14579761460263, 26.458319045841054, 15.874991427504629, 10.583327618336419, 5.2916638091682096, 2.6458319045841048, 1.3229159522920524, 0.6614579761460262, 0.2645831904584105],
         maxExtent : [458000.0, 5850000.0, 660000.0, 5990000.0],
-		restrictedExtent: [458000.0, 5850000.0, 640000.0, 5990000.0],
+        restrictedExtent: [458000.0, 5850000.0, 640000.0, 5990000.0],
         controls: [new OpenLayers.Control.Navigation(), new OpenLayers.Control.Zoom(), new OpenLayers.Control.Attribution()],
-        layers : [{
-            source : "webatlasde",
-            name : "1",
-            group : "background",
-            title : "WebAtlasDE",
-            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0], 
-        },
-        //add any OL layer, e.g. wms
+        layers : [
         {
-            source : "ol",
-            type : "OpenLayers.Layer.WMS",
-            args : ["Stadtplan Farbig", "http://lgvfds02.fhhnet.stadt.hamburg.de/ArcGIS/services/GBD_Image/Geobasisdaten/MapServer/WMSServer", {
-                layers : '1,5,9,13,17,21',
-                projection : 'EPSG:25832',
-                format : 'image/jpeg'
-            },{
-                attribution: "Kartographie und Gestaltung: <a target='_blank' href ='http://www.geoinfo.hamburg.de'>Landesbetrieb Geoinformation und Vermessung</a>",
-            }],
-            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
-            group : "background"
-        }, {
-            source : "hhde",
-            name : "dop",
-            title : "Luftbilder",
+            source: "hhde",
+            name: "dop",
+            title: "Luftbilder",
             attribution: "Kartographie und Gestaltung: <a target='_blank' href ='http://www.geoinfo.hamburg.de'>Landesbetrieb Geoinformation und Vermessung</a>",
-            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],            
-            group : "background"
-        }, {
+            bbox: [458000.0, 5850000.0, 660000.0, 5990000.0],
+            group: "background"
+        },
+        {
             source : "hhde",
             name : "geobasisdaten",
             title : "Stadtplan",
@@ -210,7 +194,7 @@ var app = new gxp.Viewer({
             args : ["Verkehrslage auf Autobahnen", "http://wscd0095/fachdaten_public/services/wms", {
                 layers : 'bab_vkl,bab_novkl',
                 format : 'image/jpeg',
-                transparent : true,
+                transparent : true
             }],
             bbox: [458000.0, 5850000.0, 660000.0, 5990000.0]
         }, {

@@ -30,9 +30,7 @@ lgv.plugins.ShowCoords = Ext.extend(gxp.plugins.Tool, {
         });
         
         return lgv.plugins.ShowCoords.superclass.addActions.call(this, [action]);
-    },
-    
-    
+    }
 });
 
 //registers the ptype name as a shortcut for creating the plugin
