@@ -120,13 +120,18 @@
         "plugins/lgv/DrawBox.js",
         "plugins/lgv/BoxInfo.js",
         "plugins/lgv/Gaz.js",
+        "plugins/lgv/Measure.js",
         "plugins/lgv/Help.js",
         "plugins/lgv/LinkToTim.js",
         "plugins/lgv/ShowCoords.js",
         "plugins/lgv/SendMail.js",
         "plugins/lgv/WMSSource.js",
         "plugins/lgv/AddLayers.js",
+<<<<<<< HEAD
         "plugins/lgv/BaseLayer.js"
+=======
+        "plugins/lgv/WMSGetFeatureInfo.js"
+>>>>>>> c9e546151da25605275035f72f650c2cfe533535
     );
     
     var scripts = document.getElementsByTagName("script");

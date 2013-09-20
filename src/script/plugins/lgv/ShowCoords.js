@@ -12,7 +12,9 @@ lgv.plugins.ShowCoords = Ext.extend(gxp.plugins.Tool, {
         var showCoords = function(e){
             var clickedLonLat = this.getLonLatFromPixel(new OpenLayers.Pixel(e.xy.x, e.xy.y));
             Ext.MessageBox.alert('Koordinate: ', Math.round(clickedLonLat.lon) + ', ' + Math.round(clickedLonLat.lat));
-        }
+        };
+        
+        var gfi = this.target.tools[this.gfiId];
               
         var action = new Ext.Action({ 
             tooltip: this.showCoordsTip,
@@ -23,8 +25,10 @@ lgv.plugins.ShowCoords = Ext.extend(gxp.plugins.Tool, {
             toggleHandler: function(button, pressed) {
                     if (pressed) {
                         map.events.register("click", map, showCoords);
+                        if (gfi) {gfi.deactivate();}
                     } else {
                         map.events.unregister("click", map, showCoords);                        
+                        if (gfi) {gfi.activate();}                        
                     }                
              }
         });
